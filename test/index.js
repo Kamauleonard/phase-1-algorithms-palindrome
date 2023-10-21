@@ -1,6 +1,25 @@
 const chai = require("chai");
-global.expect = chai.expect;
-const isPalindrome = require("../index");
+const expect = chai.expect;
+
+function isPalindrome(str) {
+
+  str = str.toLowerCase().replace(/[^a-z]/g, '');
+
+
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
 
 describe("isPalindrome", () => {
   it("returns true for 'abba'", () => {
@@ -18,4 +37,6 @@ describe("isPalindrome", () => {
   it("returns false for 'ab'", () => {
     expect(isPalindrome("ab")).to.be.false;
   });
+
+ 
 });
